@@ -1,12 +1,15 @@
 name: "."
-title: "mfeo"
+title: "Whitney Chen"
 description: |
   mfeo
 output_dir: "docs"
 navbar:
+  logo:
+    image: Msstate.png
   right:
     - text: "Home"
       href: index.html
     - text: "About"
       href: about.html
 output: distill::distill_article
+theme: "postcards.css"
