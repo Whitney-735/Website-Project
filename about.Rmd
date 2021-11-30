@@ -1,10 +1,12 @@
 ---
-title: "About this site"
-description: |
-  Some additional details about the website
+title: "About"
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-```
+# About Me
 
+I am currently a graduate student at Mississippi State University in MPA program.
+
+
+# About this Site
+
+Explore this website, you will find the projects that I have done in Data Analytics Class.
