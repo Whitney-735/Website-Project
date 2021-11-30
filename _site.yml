@@ -22,4 +22,4 @@ navbar:
         - text: "Final Project"
           href: Final.html
 output: distill::distill_article
-theme: "postcards.css"
+theme: "Style.css"

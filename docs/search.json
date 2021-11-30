@@ -5,7 +5,7 @@
       "title": "About",
       "author": [],
       "contents": "\nAbout Me\nI am currently a graduate student at Mississippi State University in MPA program.\nAbout this Site\nExplore this website, you will find the projects that I have done in Data Analytics Class.\n\n\n\n",
-      "last_modified": "2021-11-30T10:44:32-06:00"
+      "last_modified": "2021-11-30T10:50:37-06:00"
     },
     {
       "path": "Final.html",
@@ -19,14 +19,14 @@
       ],
       "date": "`r Sys.Date()`",
       "contents": "\nDistill is a publication format for scientific and technical writing, native to the web.\nLearn more about using Distill for R Markdown at https://rstudio.github.io/distill.\n\n\n\n",
-      "last_modified": "2021-11-30T10:44:33-06:00"
+      "last_modified": "2021-11-30T10:50:37-06:00"
     },
     {
       "path": "index.html",
       "title": "Whitney Chen",
       "author": [],
       "contents": "\n\n          \n          \n          \n          \n          Whitney Chen\n          \n          \n          Home\n          About\n          Resume\n          \n          \n          Projects\n           \n          ▾\n          \n          \n          R-Squared\n          Machine Learning\n          Final Project\n          \n          \n          ☰\n          \n          \n      \n        \n          \n            Whitney Chen\n          \n          \n            \n              Welcome to my website. In here, you can learn more about me.\n            \n            \n              Welcome to my website. In here, you can learn more about me.\n            \n          \n\n          \n            \n              \n                  \n                    \n                      LinkedIn\n                    \n                  \n                \n                                \n                  \n                    \n                      GitHub\n                    \n                  \n                \n                                \n                  \n                    \n                      Email\n                    \n                  \n                \n                              \n          \n\n          \n            \n              \n                                \n                  \n                    LinkedIn\n                  \n                \n                                \n                  \n                    GitHub\n                  \n                \n                                \n                  \n                    Email\n                  \n                \n                              \n            \n          \n        \n      \n    \n\n    \n    \n    ",
-      "last_modified": "2021-11-30T10:44:33-06:00"
+      "last_modified": "2021-11-30T10:50:38-06:00"
     },
     {
       "path": "ML.html",
@@ -40,7 +40,7 @@
       ],
       "date": "`r Sys.Date()`",
       "contents": "\nDistill is a publication format for scientific and technical writing, native to the web.\nLearn more about using Distill for R Markdown at https://rstudio.github.io/distill.\n\n\n\n",
-      "last_modified": "2021-11-30T10:44:34-06:00"
+      "last_modified": "2021-11-30T10:50:38-06:00"
     },
     {
       "path": "R-Squared.html",
@@ -49,7 +49,7 @@
       "author": [],
       "date": "`r Sys.Date()`",
       "contents": "\nIssue of using R-squared\nAs taught in my Statistic class, R-squared is an important value to look for in order to find the fitness of the regression model. However, the validity of the R-squared from generated model is unknown to us. If the R-squared provided is not reliable, the results derived from the model will be misled and incorrectly interpreted. Therefore, R-squared should be cautiously used when testing the fitness of a model.\nR-squared does not measure goodness of fit 1\nIt can be arbitrarily low when the model is completely correct.* By making\\(σ^2\\) large, we drive R-squared towards 0, even when every assumption of the simple linear regression model is correct in every particular.\nWhat is \\(σ^2\\)? When we perform linear regression, we assume our model almost predicts our dependent variable. The difference between “almost” and “exact” is assumed to be a draw from a Normal distribution with mean 0 and some variance we call \\(σ^2\\).\nThis statement is easy enough to demonstrate. The way we do it here is to create a function that (1) generates data meeting the assumptions of simple linear regression (independent observations, normally distributed errors with constant variance), (2) fits a simple linear model to the data, and (3) reports the R-squared. Notice the only parameter for sake of simplicity is sigma. We then “apply” this function to a series of increasing \\(σ\\) values and plot the results.\n\n\nr2.0 <- function(sig){\n  # our predictor\n  x <- seq(1,10,length.out = 100)   \n  # our response; a function of x plus some random noise\n  y <- 2 + 1.2*x + rnorm(100,0,sd = sig) \n  # print the R-squared value\n  summary(lm(y ~ x))$r.squared          \n}\nsigmas <- seq(0.5,20,length.out = 20)\n # apply our function to a series of sigma values\nrout <- sapply(sigmas, r2.0)            \nplot(rout ~ sigmas, type=\"b\")\n\n\n\n\nR-squared tanks hard with increasing sigma, even though the model is completely correct in every respect.\nR-squared can be arbitrarily close to 1 when the model is totally wrong2\nThe point being made is that R-squared does not measure goodness of fit.\n\n\nset.seed(1)\n# our predictor is data from an exponential distribution\nx <- rexp(50,rate=0.005)\n# non-linear data generation\ny <- (x-1)^2 * runif(50, min=0.8, max=1.2) \n# clearly non-linear\nplot(x,y)             \n\n\n\n\n\n\nsummary(lm(y ~ x))$r.squared\n\n\n[1] 0.8485146\n\nIt’s very high at about 0.85, but the model is completely wrong. Using R-squared to justify the “goodness” of our model in this instance would be a mistake. Hopefully one would plot the data first and recognize that a simple linear regression in this case would be inappropriate.\nSuggestion\nIn addition to what explained above, R-squared does not either necessarily increase when assumptions are better satisfied or measure how one variable explains another. When we try to measure the fitness of regression model, adjusted R-squared provides a good measure about the model.\n\nhttps://data.library.virginia.edu/is-r-squared-useless/↩︎\nhttps://data.library.virginia.edu/is-r-squared-useless/↩︎\n",
-      "last_modified": "2021-11-30T10:44:34-06:00"
+      "last_modified": "2021-11-30T10:50:39-06:00"
     },
     {
       "path": "Resume.html",
@@ -57,7 +57,7 @@
       "description": "Work and Education Experiences\n",
       "author": [],
       "contents": "\n\nWhitney Chen\nEmail: wc735@msstate.edu\nPhone: (662)801-9876\nLinkedin\n\nEducation\nMaster of Professional Accounting – Mississippi State University, Starkville, MS, May 2022\nBachelor of Accountancy – Mississippi State University, Starkville, MS, May 2021\nMinor: Business Analytics\nExperiences\nGraduate Teaching Assistant | Mississippi State University, College of Business – Starkville, MS | 06/2021 – Current\nSupport professor in implementing rigorous teaching and learning experiences.\nAssign, collect, and grade student’s work accounting to processes outline by professor and department.\nFollow established course outline to prepare and convey information and enhance understanding of materials.\nAcademic Tutor | Mississippi State University, Athletic Academic Center – Starkville, MS | 07/2020 – 04/2021\nSupported student-athlete learning through virtual instruction.\nWrote detailed summaries about each tutoring session and uploaded them to the appropriate platform.\nContacted the tutorial supervisor about any concerns.\nCollege Coach | Mississippi State University, Student Support Service Center – Starkville, MS | 08/2019 – 04/2021\nLead team of four peer mentors in designing weekly activities for 10 students with intellectual disorders to improve their independent skills.\nCollaborated with 20 team members and four graduate assistants to execute a student behavioral experiment.\nCommunicated performances of the assigned students to program’s director and parents on a weekly basis.\nVice President of Community Service | Accounting and Finance Student Society – Starkville, MS | 08/2019 – 05/2020\nCollaborated with four officers to plan activities and made organizational decisions.\nOrganized and coordinated two community service events for 25 members each semester.\nMember | Beta Alpha Psi | Mississippi State University | 07/2019 – Current\nProctor Accounting Departmental exams.\nImprove vocational skills through professional meetings, workshops, and networking events.\nSkills\nMastery of Microsoft Office Suite\nR Studio\nCertified Microsoft Office Excel Specialist\nAudit Command Language (ACL)\nLanguages\nWorking proficiency in French\nFluent in Mandarin\n\n\n\n",
-      "last_modified": "2021-11-30T10:44:35-06:00"
+      "last_modified": "2021-11-30T10:50:39-06:00"
     }
   ],
   "collections": []
