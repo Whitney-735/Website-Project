@@ -1,0 +1,108 @@
+---
+title: "Resume"
+description: |
+  Work and Education Experiences
+output: distill::distill_article
+---
+
+<center>
+
+# Whitney Chen
+
+ Email: [wc735\@msstate.edu](mailto:wc735@msstate.edu){.email} 
+
+ Phone: (662)801-9876
+
+ [Linkedin](https://www.linkedin.com/in/whitneychen-735/)
+
+</center>
+
+***
+
+### **Education**
+
+**Master of Professional Accounting** -- Mississippi State University,
+Starkville, MS, May 2022
+
+**Bachelor of Accountancy** -- Mississippi State University, Starkville,
+MS, May 2021
+
+**Minor: Business Analytics**
+
+***
+
+### **Experiences**
+
+**Graduate Teaching Assistant** \| Mississippi State University, College
+of Business -- Starkville, MS \| 06/2021 -- Current
+
+-   Support professor in implementing rigorous teaching and learning
+    experiences.
+
+-   Assign, collect, and grade student's work accounting to processes
+    outline by professor and department.
+
+-   Follow established course outline to prepare and convey information
+    and enhance understanding of materials.
+
+**Academic Tutor** \| Mississippi State University, Athletic Academic
+Center -- Starkville, MS \| 07/2020 -- 04/2021
+
+-   Supported student-athlete learning through virtual instruction.
+
+-   Wrote detailed summaries about each tutoring session and uploaded
+    them to the appropriate platform.
+
+-   Contacted the tutorial supervisor about any concerns.
+
+**College Coach** \| Mississippi State University, Student Support
+Service Center -- Starkville, MS \| 08/2019 -- 04/2021
+
+-   Lead team of four peer mentors in designing weekly activities for 10
+    students with intellectual disorders to improve their independent
+    skills.
+
+-   Collaborated with 20 team members and four graduate assistants to
+    execute a student behavioral experiment.
+
+-   Communicated performances of the assigned students to program's
+    director and parents on a weekly basis.
+
+**Vice President of Community Service** \| Accounting and Finance
+Student Society -- Starkville, MS \| 08/2019 -- 05/2020
+
+-   Collaborated with four officers to plan activities and made
+    organizational decisions.
+
+-   Organized and coordinated two community service events for 25
+    members each semester.
+
+**Member** \| Beta Alpha Psi \| Mississippi State University \| 07/2019
+-- Current
+
+-   Proctor Accounting Departmental exams.
+
+-   Improve vocational skills through professional meetings, workshops,
+    and networking events.
+
+***
+
+### **Skills**
+
+-   Mastery of Microsoft Office Suite
+
+-   R Studio
+
+-   Certified Microsoft Office Excel Specialist
+
+-   Audit Command Language (ACL)
+
+***
+
+### **Languages**
+
+-   Working proficiency in French
+
+-   Fluent in Mandarin
+
+
