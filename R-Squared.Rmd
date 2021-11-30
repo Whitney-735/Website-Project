@@ -1,0 +1,69 @@
+---
+title: "R-Squared"
+description: |
+  A Different View of R-squared in Data Analytics
+date: "`r Sys.Date()`"
+output: distill::distill_article
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Issue of using R-squared
+
+As taught in my Statistic class, R-squared is an important value to look for in order to find the fitness of the regression model. However, the validity of the R-squared from generated model is unknown to us. If the R-squared provided is not reliable, the results derived from the model will be misled and incorrectly interpreted. Therefore, R-squared should be cautiously used when testing the fitness of a model. 
+
+# R-squared does not measure goodness of fit [^1]
+
+[^1]: <https://data.library.virginia.edu/is-r-squared-useless/>
+
+It can be arbitrarily low when the model is completely correct.* By making$σ^2$ large, we drive R-squared towards 0, even when every assumption of the simple linear regression model is correct in every particular.
+
+What is $σ^2$? When we perform linear regression, we assume our model almost predicts our dependent variable. The difference between "almost" and "exact" is assumed to be a draw from a Normal distribution with mean 0 and some variance we call $σ^2$.
+
+This statement is easy enough to demonstrate. The way we do it here is to create a function that (1) generates data meeting the assumptions of simple linear regression (independent observations, normally distributed errors with constant variance), (2) fits a simple linear model to the data, and (3) reports the R-squared. Notice the only parameter for sake of simplicity is `sigma`. We then "apply" this function to a series of increasing $σ$ values and plot the results.
+
+```{r, echo=TRUE}
+r2.0 <- function(sig){
+  # our predictor
+  x <- seq(1,10,length.out = 100)   
+  # our response; a function of x plus some random noise
+  y <- 2 + 1.2*x + rnorm(100,0,sd = sig) 
+  # print the R-squared value
+  summary(lm(y ~ x))$r.squared          
+}
+sigmas <- seq(0.5,20,length.out = 20)
+ # apply our function to a series of sigma values
+rout <- sapply(sigmas, r2.0)            
+plot(rout ~ sigmas, type="b")
+```
+
+R-squared tanks hard with increasing sigma, even though the model is *completely correct* in every respect.
+
+# R-squared can be arbitrarily close to 1 when the model is totally wrong[^1]
+
+The point being made is that R-squared does not measure goodness of fit.
+
+```{r, echo=TRUE}
+set.seed(1)
+# our predictor is data from an exponential distribution
+x <- rexp(50,rate=0.005)
+# non-linear data generation
+y <- (x-1)^2 * runif(50, min=0.8, max=1.2) 
+# clearly non-linear
+plot(x,y)				     
+```
+
+```{r,echo=TRUE}
+summary(lm(y ~ x))$r.squared
+```
+
+It's very high at about 0.85, but the model is completely wrong. Using R-squared to justify the "goodness" of our model in this instance would be a mistake. Hopefully one would plot the data first and recognize that a simple linear regression in this case would be inappropriate.
+
+# Suggestion 
+
+In addition to what explained above, R-squared does not either necessarily increase when assumptions are better satisfied or measure how one variable explains another. When we try to measure the fitness of regression model, adjusted R-squared provides a good measure about the model. 
+
+
+
