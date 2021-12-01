@@ -3,7 +3,7 @@ title: "Machine Learning"
 description: |
   K-Nearest Neighbor
 output: 
-  distill::distill_article
+  distill::distill_article:
     toc: true
     toc_depth: 3
 ---
@@ -18,6 +18,56 @@ It is a type of machine learning model that helps to classify the variables. In 
 
 # How to determine?
 
+We will use Tips data[^1] to predict and classify the sex of customers based on other variables collected in the data set.
 
+[^1]: <https://raw.githubusercontent.com/Professor-Hunt/ACC8143/main/data/tips.rda>
 
+```{r liabrary, message=FALSE, include=FALSE}
+library(caret)
+library(tidyverse)
+library(curl)
+load(curl("https://raw.githubusercontent.com/Professor-Hunt/ACC8143/main/data/tips.rda"))
+```
 
+## Procesing data
+
+First we split the data into training and testing group, then build Knn model using the training set.
+
+```{r split data, echo=TRUE}
+trainIndex <- createDataPartition(tips$sex, p = .6, list = FALSE, times = 1)
+KnnTrain <- tips[ trainIndex,]
+KnnTest  <- tips[-trainIndex,]
+
+# train Knn model with training dataset
+knn_model <- train(
+  sex ~., 
+  data = KnnTrain, 
+  method = "knn",
+  trControl = trainControl("cv", number = 10),
+  preProcess = c("center","scale"),
+  tuneLength = 10
+  )
+knn_model
+```
+
+```{r, echo=FALSE}
+plot(knn_model)
+```
+
+As shown above, when comparing to 17 nearest neighbors, Knn model can generate the best result. Next step is making prediction using testing data
+
+```{r, echo=TRUE}
+predictions <- predict(knn_model,KnnTest)
+
+# compute the prediction error
+confusionMatrix(predictions, factor(KnnTest$sex))
+
+```
+
+## Results
+
+According to the confusion matrix, the value of both accuracy and Kappa are low. Knn model did a okay job on classifying the sex of customers based on the characteristics of neighbors. However, this model may not be the best for this data set.
+
+# Apply to Accounting Area
+
+ K-Nearest Neighbor machine learning algorithm is useful in predicting bankruptcy and fraudulent transactions. With the model being well trained, auditors can easily forecasting whether or not the company is approaching bankruptcy or have fraudulent activities. 

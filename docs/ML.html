@@ -87,33 +87,29 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>Whitney Chen: Untitled</title>
+  <title>Whitney Chen: Machine Learning</title>
 
-  <meta property="description" itemprop="description" content="A new article created using the Distill format."/>
+  <meta property="description" itemprop="description" content="K-Nearest Neighbor"/>
 
 
-  <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2021-11-30"/>
-  <meta property="article:created" itemprop="dateCreated" content="2021-11-30"/>
-  <meta name="article:author" content="Nora Jones"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Whitney Chen: Untitled"/>
+  <meta property="og:title" content="Whitney Chen: Machine Learning"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="A new article created using the Distill format."/>
+  <meta property="og:description" content="K-Nearest Neighbor"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="Whitney Chen"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Whitney Chen: Untitled"/>
-  <meta property="twitter:description" content="A new article created using the Distill format."/>
+  <meta property="twitter:title" content="Whitney Chen: Machine Learning"/>
+  <meta property="twitter:description" content="K-Nearest Neighbor"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Untitled"]},{"type":"character","attributes":{},"value":["A new article created using the Distill format.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Nora Jones"]},{"type":"character","attributes":{},"value":["https://example.com/norajones"]},{"type":"character","attributes":{},"value":["Spacely Sprockets"]},{"type":"character","attributes":{},"value":["https://example.com/spacelysprokets"]}]}]},{"type":"character","attributes":{},"value":["2021-11-30"]},{"type":"character","attributes":{},"value":["distill::distill_article"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","output"]}},"value":[{"type":"character","attributes":{},"value":["Machine Learning"]},{"type":"character","attributes":{},"value":["K-Nearest Neighbor\n"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2376,7 +2372,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Untitled","description":"A new article created using the Distill format.","authors":[{"author":"Nora Jones","authorURL":"https://example.com/norajones","affiliation":"Spacely Sprockets","affiliationURL":"https://example.com/spacelysprokets","orcidID":""}],"publishedDate":"2021-11-30T00:00:00.000-06:00","citationText":"Jones, 2021"}
+{"title":"Machine Learning","description":"K-Nearest Neighbor","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2414,22 +2410,130 @@ Projects
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Untitled</h1>
+<h1>Machine Learning</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>A new article created using the Distill format.</p></p>
+<p><p>K-Nearest Neighbor</p></p>
 </div>
 
-<div class="d-byline">
-  Nora Jones <a href="https://example.com/norajones" class="uri">https://example.com/norajones</a> (Spacely Sprockets)<a href="https://example.com/spacelysprokets" class="uri">https://example.com/spacelysprokets</a>
-  
-<br/>2021-11-30
-</div>
 
 <div class="d-article">
-<p>Distill is a publication format for scientific and technical writing, native to the web.</p>
-<p>Learn more about using Distill for R Markdown at <a href="https://rstudio.github.io/distill" class="uri">https://rstudio.github.io/distill</a>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#what-is-knn">What is KNN?</a></li>
+<li><a href="#how-to-determine">How to determine?</a>
+<ul>
+<li><a href="#procesing-data">Procesing data</a></li>
+<li><a href="#results">Results</a></li>
+</ul></li>
+<li><a href="#apply-to-accounting-area">Apply to Accounting Area</a></li>
+</ul>
+</nav>
+</div>
+<h1 id="what-is-knn">What is KNN?</h1>
+<p>It is a type of machine learning model that helps to classify the variables. In other words, Knn can determine the characteristic of an object by comparing some objects closely similar to it.</p>
+<h1 id="how-to-determine">How to determine?</h1>
+<p>We will use Tips data<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> to predict and classify the sex of customers based on other variables collected in the data set.</p>
+<h2 id="procesing-data">Procesing data</h2>
+<p>First we split the data into training and testing group, then build Knn model using the training set.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>trainIndex</span> <span class='op'>&lt;-</span> <span class='fu'>createDataPartition</span><span class='op'>(</span><span class='va'>tips</span><span class='op'>$</span><span class='va'>sex</span>, p <span class='op'>=</span> <span class='fl'>.6</span>, list <span class='op'>=</span> <span class='cn'>FALSE</span>, times <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
+<span class='va'>KnnTrain</span> <span class='op'>&lt;-</span> <span class='va'>tips</span><span class='op'>[</span> <span class='va'>trainIndex</span>,<span class='op'>]</span>
+<span class='va'>KnnTest</span>  <span class='op'>&lt;-</span> <span class='va'>tips</span><span class='op'>[</span><span class='op'>-</span><span class='va'>trainIndex</span>,<span class='op'>]</span>
+
+<span class='co'># train Knn model with training dataset</span>
+<span class='va'>knn_model</span> <span class='op'>&lt;-</span> <span class='fu'>train</span><span class='op'>(</span>
+  <span class='va'>sex</span> <span class='op'>~</span><span class='va'>.</span>, 
+  data <span class='op'>=</span> <span class='va'>KnnTrain</span>, 
+  method <span class='op'>=</span> <span class='st'>"knn"</span>,
+  trControl <span class='op'>=</span> <span class='fu'>trainControl</span><span class='op'>(</span><span class='st'>"cv"</span>, number <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>,
+  preProcess <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"center"</span>,<span class='st'>"scale"</span><span class='op'>)</span>,
+  tuneLength <span class='op'>=</span> <span class='fl'>10</span>
+  <span class='op'>)</span>
+<span class='va'>knn_model</span>
+</code></pre>
+</div>
+<pre><code>k-Nearest Neighbors 
+
+148 samples
+  6 predictor
+  2 classes: &#39;Female&#39;, &#39;Male&#39; 
+
+Pre-processing: centered (8), scaled (8) 
+Resampling: Cross-Validated (10 fold) 
+Summary of sample sizes: 133, 134, 133, 133, 133, 133, ... 
+Resampling results across tuning parameters:
+
+  k   Accuracy   Kappa      
+   5  0.5258333  -0.05953326
+   7  0.5667262   0.02624695
+   9  0.5600595  -0.03446032
+  11  0.6134524   0.07674398
+  13  0.6339286   0.12322740
+  15  0.6267857   0.10245699
+  17  0.6134524   0.06911569
+  19  0.6401190   0.14702885
+  21  0.6334524   0.13068431
+  23  0.6196429   0.09871363
+
+Accuracy was used to select the optimal model using the
+ largest value.
+The final value used for the model was k = 19.</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="ML_files/figure-html5/unnamed-chunk-1-1.png" width="624" /></p>
+</div>
+<p>As shown above, when comparing to 17 nearest neighbors, Knn model can generate the best result. Next step is making prediction using testing data</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>predictions</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>knn_model</span>,<span class='va'>KnnTest</span><span class='op'>)</span>
+
+<span class='co'># compute the prediction error</span>
+<span class='fu'>confusionMatrix</span><span class='op'>(</span><span class='va'>predictions</span>, <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>KnnTest</span><span class='op'>$</span><span class='va'>sex</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Confusion Matrix and Statistics
+
+          Reference
+Prediction Female Male
+    Female     12    5
+    Male       22   57
+                                          
+               Accuracy : 0.7188          
+                 95% CI : (0.6178, 0.8058)
+    No Information Rate : 0.6458          
+    P-Value [Acc &gt; NIR] : 0.080980        
+                                          
+                  Kappa : 0.307           
+                                          
+ Mcnemar&#39;s Test P-Value : 0.002076        
+                                          
+            Sensitivity : 0.3529          
+            Specificity : 0.9194          
+         Pos Pred Value : 0.7059          
+         Neg Pred Value : 0.7215          
+             Prevalence : 0.3542          
+         Detection Rate : 0.1250          
+   Detection Prevalence : 0.1771          
+      Balanced Accuracy : 0.6361          
+                                          
+       &#39;Positive&#39; Class : Female          
+                                          </code></pre>
+</div>
+<h2 id="results">Results</h2>
+<p>According to the confusion matrix, the value of both accuracy and Kappa are low. Knn model did a okay job on classifying the sex of customers based on the characteristics of neighbors. However, this model may not be the best for this data set.</p>
+<h1 id="apply-to-accounting-area">Apply to Accounting Area</h1>
+<p>K-Nearest Neighbor machine learning algorithm is useful in predicting bankruptcy and fraudulent transactions. With the model being well trained, auditors can easily forecasting whether or not the company is approaching bankruptcy or have fraudulent activities.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p><a href="https://raw.githubusercontent.com/Professor-Hunt/ACC8143/main/data/tips.rda" class="uri">https://raw.githubusercontent.com/Professor-Hunt/ACC8143/main/data/tips.rda</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
