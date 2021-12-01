@@ -1,0 +1,23 @@
+---
+title: "Machine Learning"
+description: |
+  K-Nearest Neighbor
+output: 
+  distill::distill_article
+    toc: true
+    toc_depth: 3
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# What is KNN?
+
+It is a type of machine learning model that helps to classify the variables. In other words, Knn can determine the characteristic of an object by comparing some objects closely similar to it.
+
+# How to determine?
+
+
+
+
