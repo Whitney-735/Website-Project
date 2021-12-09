@@ -1,25 +1,124 @@
 ---
-title: "Untitled"
+title: "Support Vector Machines"
 description: |
-  A new article created using the Distill format.
-author:
-  - name: Nora Jones 
-    url: https://example.com/norajones
-    affiliation: Spacely Sprockets
-    affiliation_url: https://example.com/spacelysprokets
-date: "`r Sys.Date()`"
-output: distill::distill_article
+  Classifying the type of wine using Support Vector Machine Learning
+output: 
+  distill::distill_article:
+    toc: true
+    toc_depth: 3
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-Distill is a publication format for scientific and technical writing, native to the web. 
+# What is SVM
 
-Learn more about using Distill for R Markdown at <https://rstudio.github.io/distill>.
+Support Vector Machine is a supervised machine learning algorithm capable of performing classification, regression, and even outlier detection[^1]. It will draw a line that separates two classes of variables in order to determine the character of predicting variables. Here, I am going to use SVM Linear to predict the type of wine based on the variables provided in the data set. 
+
+[^1]: <https://towardsdatascience.com/support-vector-machine-python-example-d67d9b63f1c8>
+
+# Data used in SVM
+
+The data I am using is found from UCI website[^2] where provides many data sets that can be used for analysis purpose. I choose wine data set for this project to predict the class of wine using the collected variables. There are 13 variables used to classify the class of wine. 
+
+[^2]: <https://archive.ics.uci.edu/ml/datasets/wine>
 
 
+# Data Statistics
 
+```{r liabrary, message=FALSE, include=FALSE}
+library(caret)
+library(tidyverse)
+library(GGally)
+library(readxl)
+WineData1 <- read_excel("WineData1.xlsx")
+library(dplyr)
+```
 
+## Overview of wine data set
 
+```{r, echo=FALSE}
+WineData1= data.frame(na.omit(WineData1))
+WineDate2<- WineData1%>%
+  mutate(class=ifelse(WineData1$Class==1, "One",
+                          ifelse(WineData1$Class==2, "Two","Three")))
+str(WineDate2)
+ knitr::kable(WineDate2)%>%
+      kableExtra::kable_styling("striped")%>%
+      kableExtra::scroll_box(width = "100%",height="300px")
+```
+
+```{r, echo=TRUE}
+# Overall relationships among variables
+GGally::ggpairs(WineDate2, aes(color = Class, alpha = 0.5))
+# This one seem to separate wine classes well
+ggplot(data=WineDate2,mapping = aes(x=Proline,y=Color.intensity,color=Class))+
+  geom_point(alpha=0.5)
+```
+
+From this plot, we can see that variables Proline and Color intensity seem to be good classifier or estimator of wine class. Next, we can use boxplot to verify this assumption.
+
+```{r, echo=TRUE}
+ggplot(WineDate2, aes(x = Class, y = Proline, color= Class))+
+  geom_boxplot()+ 
+  ggtitle("Class vs. Proline")
+
+ggplot(WineDate2, aes(x = Class, y = Color.intensity, color= Class ))+
+  geom_boxplot()+ 
+  ggtitle("Class vs. Color Intensity")
+```
+
+Both boxplots indicates that wine classes could be determined based on the mean of variables since they are different. 
+
+## Process the wine data
+
+```{r, echo=TRUE}
+trainIndex <- createDataPartition(WineDate2$class, p = .6, list = FALSE, times = 1)
+
+SVMTrain <- WineDate2[ trainIndex,]
+SVMTest  <- WineDate2[-trainIndex,]
+
+Wine_SVM <- train(
+  form = as.factor(class)~ .,
+  data = SVMTrain,
+  trControl = trainControl(method = "cv", number = 10,
+                           classProbs =  TRUE),
+  method = "svmLinear",
+  preProcess = c("center", "scale"),
+  tuneLength = 10)
+Wine_SVM
+summary(Wine_SVM)
+
+svm_Pred<-predict(Wine_SVM,SVMTest,type="prob")
+
+svmtestpred<-cbind(svm_Pred,SVMTest)
+
+svmtestpred<-svmtestpred%>%
+  mutate(prediction=if_else(One>Two & One>Three,"One",
+                            if_else(Two>One & Two>Three, "Two",
+                                    if_else(Three>One & Three>Two,"Three", "PROBLEM"))))
+
+table(svmtestpred$prediction)
+                          
+confusionMatrix(factor(svmtestpred$prediction),factor(svmtestpred$class))
+```
+
+From the result, we can see SVM does great job in classifying wine classes from the data set. This model has high accuracy rate and Kappa value.
+
+## Verify my assumption 
+
+```{r, echo=TRUE}
+supportvectors<-SVMTrain[Wine_SVM$finalModel@SVindex,]
+ggplot(data=SVMTest, mapping = aes(x=Proline,y=Color.intensity,color=class))+
+  geom_point(alpha=0.5)+
+  geom_point(data=svmtestpred, mapping = aes(x=Proline,y=Color.intensity, color=prediction),shape=6,size=3)+
+  geom_point(data=supportvectors, mapping = aes(x=Proline,y=Color.intensity),shape=4,size=4)+
+  theme(legend.title = element_blank())+ggtitle("SVM Demonstration")
+```
+
+Based on SVM Demonstration plot, variables Proline and Color Intensity are not the only two variables SVM takes into consideration of determining wine types. We can see there are lots of Xs are marked outside of triangels, which means that pridictions and actual results are not matach. 
+
+# SVM Applications
+
+This is a powerful machine learning algorithm that can be used for classification. From the process result, we understand how well this model determining the wine classes. The machine learning method also can be used in auditing or banking system to pridect going concern issue or bankrupt issues.  
