@@ -13,4 +13,4 @@ output:
 site: distill::distill_website
 ---
  
-Welcome to my website. In here, you can learn more about me. 
+Hey, there! Welcome to my website.

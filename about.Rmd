@@ -4,9 +4,9 @@ title: "About"
 
 # About Me
 
-I am currently a graduate student at Mississippi State University in MPA program.
+I am currently a graduate student at Mississippi State University in MPA program. After graduating in May 2022, I will start working for Deloitte as Tax Consultant. Currently, I am studying CPA financial exam and planning to take it during this winter break. Wish me luck!
 
 
 # About this Site
 
-Explore this website, you will find the projects that I have done in Data Analytics Class.
+On this website, you will find my resume and the projects that I have done in Data Analytics Class. Feel free to check out another time to see my updates.
